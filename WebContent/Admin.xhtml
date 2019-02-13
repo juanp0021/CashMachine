@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+ >
+
+    <h:head>
+        <title>Aplicación JSF 2.0</title>
+    </h:head>
+    <h:body>
+        <h3>Cajero</h3>
+        
+        <h:form  id="formularioAdmin">
+           <p:growl id="growl" showDetail="true" sticky="true" />  
+           
+           <h:outputText value="Números de Billete:" ></h:outputText>
+           
+           <!--required="true"  requerido si o si   -->
+           <p:inputNumber id="idnumeroBilletetxt"  value="#{cajeroAdmin.cantidadBillete}" required="true" ></p:inputNumber>
+           
+           <h:outputText value="Denominación de Billete:" ></h:outputText>
+           
+           <p:selectOneMenu  id="denominacionBilletetxt" value="#{cajeroAdmin.billete.denominacionBillete}" requiredMessage="favor diligenciar la denominación" required="#{cajeroAdmin.obligatorio}" >
+             <f:selectItem itemLabel="Denominacion" itemValue="" noSelectionOption="true" />
+             <f:selectItem itemLabel="Cincuenta Mil" itemValue="50.000" />
+             <f:selectItem itemLabel="Veinte Mil" itemValue="20.000" />
+           </p:selectOneMenu>
+           
+           <p:message for="denominacionBilletetxt"></p:message>
+           <p:commandButton value="Guardar" action="#{cajeroAdmin.guardarCantidad}" update="formularioAdmin" process="formularioAdmin">
+           
+           </p:commandButton> 
+        </h:form>
+    </h:body>
+</html>
