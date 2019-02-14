@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+ >
+
+    <h:head>
+        <title>Aplicación JSF 2.0</title>
+    </h:head>
+    <h:body>
+        <h3>Cajero</h3>
+        
+        <h:form  id="formularioAdmin">
+           <p:growl id="growl" showDetail="true" sticky="true" />  
+       
+           <p:panelGrid columns="2">
+           
+           
+           <h:outputText value="Números de Billete:" ></h:outputText>
+           
+           <p:inputNumber id="idnumeroBilletetxt"  value="#{cajeroAdminBean.admincajero.cantidad}" required="true" ></p:inputNumber>
+       
+       	   <h:outputText value="Denominación de Billete:" ></h:outputText>
+           <p:inputNumber id="idDenominacionBilletetxt"  value="#{cajeroAdminBean.admincajero.denominacion}" required="true" ></p:inputNumber>
+           
+           
+           </p:panelGrid>
+           
+           <p:message for="idDenominacionBilletetxt"></p:message>
+           <p:commandButton value="Guardar" action="#{cajeroAdminBean.guardarCantidad}" update="formularioAdmin" process="formularioAdmin">
+           </p:commandButton> 
+        </h:form>
+    </h:body>
+</html>

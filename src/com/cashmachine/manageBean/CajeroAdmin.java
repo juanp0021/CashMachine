@@ -1,25 +1,38 @@
 package com.cashmachine.manageBean;
 import java.io.Serializable;
-
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
 import javax.faces.context.FacesContext;
-
 import net.bytebuddy.asm.Advice.This;
-
-import com.cashmachine.entity.Billete;
+import com.cashmachine.entity.AdminCajero;
 import com.cashmachine.services.CashMachineService;
 
-@ManagedBean(name="cajeroAdmin")
+@ManagedBean(name="cajeroAdminBean")
 
 @SessionScoped
 public class CajeroAdmin implements Serializable {
 	
 	
 	//  SE DOCUMENTA EL ATRIBUTO
-	private int cantidadBillete;
-	private Billete billete;
+	private AdminCajero admincajero;
+	public AdminCajero getAdmincajero() {
+		return admincajero;
+	}
+
+	public void setAdmincajero(AdminCajero admincajero) {
+		this.admincajero = admincajero;
+	}
+
+	public CashMachineService getCashMachineService() {
+		return cashMachineService;
+	}
+
+	public void setCashMachineService(CashMachineService cashMachineService) {
+		this.cashMachineService = cashMachineService;
+	}
+
+
 	private boolean obligatorio;
 	private CashMachineService cashMachineService;
 	
@@ -41,44 +54,27 @@ public class CajeroAdmin implements Serializable {
 	// se inicializa los objetos en caso de ser null
 	public void  init (){
 		
-		this.billete = new Billete();
+		this.admincajero = new AdminCajero();
 		this.cashMachineService = new CashMachineService();
 		this.obligatorio = true;
 		
 	}
 
-	public Billete getBillete() {
-		return billete;
-	}
-
-	public void setBillete(Billete billete) {
-		this.billete = billete;
-	}
-
-	public int getCantidadBillete() {
-		return cantidadBillete;
-	}
-
-	public void setCantidadBillete(int cantidadBillete) {
-		this.cantidadBillete = cantidadBillete;
-	}
-	
+		
 	// SE DOCUMENTA EL METODO
 	public void  guardarCantidad(){
 		
 		System.out.println(" GUARDO!!!!!");
-		System.out.println(this.billete.getDenominacionBillete() );
-		System.out.println(this.cantidadBillete );
 		
 		
 		boolean resultado;
 		try {
-			resultado = cashMachineService.guardar(this.billete, this.cantidadBillete);
+			resultado = cashMachineService.guardar(this.admincajero);
 			
 			if (resultado){
 				// una vez guarda limpia  las variables
-				this.billete = new Billete();
-				this.cantidadBillete = 0;
+				
+			     this.admincajero = new AdminCajero();
 				 FacesContext context = FacesContext.getCurrentInstance();
 		         context.addMessage(null, new FacesMessage("Resultado",  "se guardo el registro exitosamente.") );
 			}else{
@@ -95,10 +91,6 @@ public class CajeroAdmin implements Serializable {
 		    FacesContext context = FacesContext.getCurrentInstance();
 		    context.addMessage(null, new FacesMessage("Resultado",  "error al guardar.") );
 		}
-		
-		
-		
-		
 		
 
 	}

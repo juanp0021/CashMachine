@@ -2,18 +2,38 @@ package com.cashmachine.services;
 
 import java.sql.SQLException;
 
-import com.cashmachine.entity.Billete;
+import javax.persistence.EntityManager;
+import javax.persistence.Persistence;
+
+import com.cashmachine.entity.AdminCajero;
+
 
 
 // el proposito del service esta clase es el codificar las reglas de negocio
 
 public class CashMachineService {
 
-public boolean guardar(Billete billete, int Cantidad) throws Exception{
+	private EntityManager entityManager;
 	
-	// aca va el persist
+	public CashMachineService() {
+		
+		entityManager =   Persistence.createEntityManagerFactory("entityManager").createEntityManager();
+		
+		// TODO Auto-generated constructor stub
+	}
 	
-	return false;
-}
+	public boolean guardar(AdminCajero adminCajero) throws Exception{
+		
+		// aca va el persist
+		
+		entityManager.getTransaction().begin();
+		
+		entityManager.persist(adminCajero);
+		
+		entityManager.getTransaction().commit();
+		entityManager.close();
+		
+		return false;
+	}
 
 }
