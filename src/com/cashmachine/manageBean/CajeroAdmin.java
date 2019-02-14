@@ -8,7 +8,7 @@ import net.bytebuddy.asm.Advice.This;
 import com.cashmachine.entity.AdminCajero;
 import com.cashmachine.services.CashMachineService;
 
-@ManagedBean(name="cajeroAdminBean")
+@ManagedBean(name="cajeroAdmin")
 
 @SessionScoped
 public class CajeroAdmin implements Serializable {
