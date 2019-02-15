@@ -64,7 +64,7 @@ public class CajeroAdmin implements Serializable {
 	// SE DOCUMENTA EL METODO
 	public void  guardarCantidad(){
 		
-		System.out.println(" GUARDO!!!!!");
+		System.out.println(" GUARDO!!!!!"+this.admincajero.getCantidad());
 		
 		
 		boolean resultado;

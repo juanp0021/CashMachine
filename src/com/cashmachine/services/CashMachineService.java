@@ -25,13 +25,37 @@ public class CashMachineService {
 	public boolean guardar(AdminCajero adminCajero) throws Exception{
 		
 		// aca va el persist
+		/*
+	
+		if (entityManager.isOpen()){
+			entityManager.getTransaction().begin();
+			entityManager.persist(adminCajero);
+			entityManager.getTransaction().commit();
+		
+		}
+		*/
 		
 		entityManager.getTransaction().begin();
+		try {
+		    //do something with your database
+			System.out.println("id------"+adminCajero.getId());
+			adminCajero = entityManager.merge(adminCajero);
+			
+			System.out.println("id>>>>>>"+adminCajero.getId());
+			
+			
+			
+			entityManager.getTransaction().commit();
+		} 
+		finally {
+		   if (entityManager.getTransaction().isActive())
+			   entityManager.getTransaction().rollback(); 
+		}
 		
-		entityManager.persist(adminCajero);
-		
-		entityManager.getTransaction().commit();
-		entityManager.close();
+			
+				
+				
+		//entityManager.close();
 		
 		return false;
 	}

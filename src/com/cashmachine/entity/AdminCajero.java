@@ -3,14 +3,17 @@ package com.cashmachine.entity;
 import javax.persistence.Column;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToOne;
+import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 
 @javax.persistence.Entity
 @Table(name = "adminCajero")
+@SequenceGenerator(name = "sequenceAdminCajero", sequenceName = "sequenceAdminCajero", allocationSize = 1)
 public class AdminCajero {
 	
 	private  int id;
@@ -30,7 +33,7 @@ public class AdminCajero {
 	
 	
 	@Id 
-	@GeneratedValue
+	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceAdminCajero")
 	public int getId() {
 		return id;
 	}
@@ -45,7 +48,7 @@ public class AdminCajero {
 	}
 	
 	public void setCantidad(int cantidad) {
-		cantidad = cantidad;
+		this.cantidad = cantidad;
 	}
 	
 	@Column (name="denominacion")
