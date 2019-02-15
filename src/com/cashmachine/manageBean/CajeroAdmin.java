@@ -6,6 +6,7 @@ import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.bean.ViewScoped;
 import javax.faces.context.FacesContext;
 
 import net.bytebuddy.asm.Advice.This;
@@ -16,7 +17,7 @@ import com.cashmachine.validators.CashMachineValidators;
 
 @ManagedBean(name="cajeroAdmin")
 
-@SessionScoped
+@ViewScoped
 public class CajeroAdmin implements Serializable {
 	
 	

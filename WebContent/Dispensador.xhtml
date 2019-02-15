@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+ >
+
+    <h:head>
+        <title>CASH MACHINE</title>
+    </h:head>
+    <h:body>
+        <h3>Dispensador Cajero Automatico</h3>
+        <h:form  id="formularioDispensador">
+           <p:growl id="growl" showDetail="true" sticky="true" />  
+           
+           <p:panelGrid columns="1">
+           	  <h:outputText value="Ingrese Cantidad a Retirar:" ></h:outputText>
+           	  <p:inputNumber id="idvalortxt"  value="#{transaccion.valor}" required="true" decimalPlaces="0" ></p:inputNumber>
+           </p:panelGrid>
+           
+           <p:message for="idvalortxt"></p:message>
+           <p:commandButton value="Guardar" action="#{transaccion.dispensarDinero}" update="formularioDispensador" process="formularioDispensador">
+		   </p:commandButton>
+	    </h:form>
+	    
+	    <a href="/CaschMachine/Admin.xhtml" > Ir a Administrar</a>
+</h:body>
+</html>

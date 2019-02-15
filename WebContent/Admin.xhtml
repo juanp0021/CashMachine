@@ -8,31 +8,21 @@
  >
 
     <h:head>
-        <title>Aplicación JSF 2.0</title>
+        <title>CASH MACHINE</title>
     </h:head>
     <h:body>
-        <h3>Cajero</h3>
-        
+        <h3>Cajero Automatico</h3>
         <h:form  id="formularioAdmin">
            <p:growl id="growl" showDetail="true" sticky="true" />  
-       
            <p:panelGrid columns="2">
-           
-           
            <h:outputText value="Números de Billete:" ></h:outputText>
-           
            <p:inputNumber id="idnumeroBilletetxt"  value="#{cajeroAdmin.admincajero.cantidad}" required="true" decimalPlaces="0" ></p:inputNumber>
-       
        	   <h:outputText value="Denominación de Billete:" ></h:outputText>
            <p:inputNumber id="idDenominacionBilletetxt"  value="#{cajeroAdmin.admincajero.denominacion}" required="true" decimalPlaces="0"  ></p:inputNumber>
-           
-           
            </p:panelGrid>
-           
            <p:message for="idDenominacionBilletetxt"></p:message>
            <p:commandButton value="Guardar" action="#{cajeroAdmin.guardarCantidad}" update="formularioAdmin" process="formularioAdmin">
 		   </p:commandButton>
-		   
 			<p:dataTable var="billete" value="#{cajeroAdmin.billetes}">
 				<p:column headerText="Denominación">
 					<h:outputText value="#{billete.denominacion}" />
@@ -46,6 +36,6 @@
 			</p:dataTable>    
         </h:form>
         
-		
+        <a href="/CaschMachine/Dispensador.xhtml" > Ir a Dispensador</a>
 </h:body>
 </html>
