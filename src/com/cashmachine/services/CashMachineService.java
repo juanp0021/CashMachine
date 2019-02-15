@@ -93,4 +93,29 @@ public class CashMachineService {
 			return 0;
 		} 
 	}
+
+
+	public ArrayList<AdminCajero> dispensarBilletes(
+			ArrayList<AdminCajero> billetes, int valor) {
+		//PILASSSSSSSSSSSSSSSSSSSSSSS
+		//hacer la logica para que valide que billetes le va a devolver por denominación
+		
+		
+		return billetes;
+	}
+
+
+	
+	  /// elimina los billetes dispensados  usar .merge
+	public ArrayList<AdminCajero> descontarBilletes(
+			ArrayList<AdminCajero> billetesDispensados,
+			ArrayList<AdminCajero> billetes) {
+		
+		
+		//PILASSSSSSSSSSSSSSSSSSSSSSS
+		//hacer la logica para que valide que billetes le va a devolver por denominación
+				
+		
+		return null;
+	}
 }

@@ -21,8 +21,21 @@
            </p:panelGrid>
            
            <p:message for="idvalortxt"></p:message>
-           <p:commandButton value="Guardar" action="#{transaccion.dispensarDinero}" update="formularioDispensador" process="formularioDispensador">
+           <p:commandButton value="Dispensar" action="#{transaccion.dispensarDinero}" update="formularioDispensador" process="formularioDispensador">
 		   </p:commandButton>
+		  
+		   <p:commandButton value="reiniciar transaccion" action="#{transaccion.reiniciar}" update="formularioDispensador" process="formularioDispensador">
+		   </p:commandButton>
+		  
+		   		<p:dataTable var="billete" value="#{transaccion.billetesDispensados}">
+				<p:column headerText="Denominación">
+					<h:outputText value="#{billete.denominacion}" />
+				</p:column>
+				<p:column headerText="Cantidad">
+					<h:outputText value="#{billete.cantidad}" />
+				</p:column>
+			</p:dataTable>   
+			
 	    </h:form>
 	    
 	    <a href="/CaschMachine/Admin.xhtml" > Ir a Administrar</a>
