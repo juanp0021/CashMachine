@@ -12,6 +12,7 @@ import net.bytebuddy.asm.Advice.This;
 
 import com.cashmachine.entity.AdminCajero;
 import com.cashmachine.services.CashMachineService;
+import com.cashmachine.validators.CashMachineValidators;
 
 @ManagedBean(name="cajeroAdmin")
 
@@ -84,7 +85,16 @@ public class CajeroAdmin implements Serializable {
 	// SE DOCUMENTA EL METODO
 	public void  guardarCantidad(){
 		
-		System.out.println(" GUARDO!!!!!"+this.admincajero.getCantidad());
+		CashMachineValidators validar = new CashMachineValidators();
+		FacesContext context = FacesContext.getCurrentInstance();
+      
+		String resultado = validar.validarFajoBillete(this.billetes,this.admincajero);
+		
+		if(resultado != ""){
+			  context.addMessage(null, new FacesMessage("Error",  resultado) );
+			  return;
+		}
+		//System.out.println(" GUARDO!!!!!"+this.admincajero.getCantidad());
 		
 		
 		AdminCajero resultadoAdminCajero;
@@ -95,12 +105,11 @@ public class CajeroAdmin implements Serializable {
 			if (resultadoAdminCajero != null){
 				// una vez guarda limpia  las variables
 			     this.admincajero = new AdminCajero();
-				 FacesContext context = FacesContext.getCurrentInstance();
-		         context.addMessage(null, new FacesMessage("Resultado",  "se guardo el registro exitosamente.") );
+				 context.addMessage(null, new FacesMessage("Resultado",  "se guardo el registro exitosamente.") );
 		         this.billetes.add(resultadoAdminCajero);
 		         
 			}else{
-			     FacesContext context = FacesContext.getCurrentInstance();
+		
 		         context.addMessage(null, new FacesMessage("Resultado",  "error al guardar.") );
 			}
 			
@@ -108,7 +117,6 @@ public class CajeroAdmin implements Serializable {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		    FacesContext context = FacesContext.getCurrentInstance();
 		    context.addMessage(null, new FacesMessage("Resultado",  "error al guardar.") );
 		}
 		

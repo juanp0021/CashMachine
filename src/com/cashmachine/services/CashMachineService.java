@@ -28,6 +28,7 @@ public class CashMachineService {
 	public AdminCajero guardar(AdminCajero adminCajero) throws Exception{
 		
 		
+		
 		entityManager.getTransaction().begin();
 		try {
 				System.out.println("id------"+adminCajero.getId());
