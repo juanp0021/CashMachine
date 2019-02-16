@@ -80,6 +80,7 @@ public class Transaccion implements Serializable {
 		
 		if (resultado !=""){
 			context.addMessage(null, new FacesMessage("Resultado",resultado) );
+			this.billetesDispensados = new ArrayList<AdminCajero>();
 			return;
 		}else{
 			
@@ -88,11 +89,12 @@ public class Transaccion implements Serializable {
 			
 			
 			if (this.billetesDispensados.isEmpty()){
-				
 				context.addMessage(null, new FacesMessage("Resultado","El cajero no tiene recursos financieros suficientes para dispensar su pedido.") );	
-				
+			}else{
+				cashMachineService.descontarBilletes(this.billetesDispensados,this.billetes);
+				loadBilletes();
 			}
-			 //cashMachineService.descontarBilletes(this.billetesDispensados,this.billetes);
+			 
 			
 			
 		}

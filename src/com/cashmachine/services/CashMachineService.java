@@ -31,9 +31,8 @@ public class CashMachineService {
 		
 		entityManager.getTransaction().begin();
 		try {
-				System.out.println("id------"+adminCajero.getId());
+				
 				adminCajero = entityManager.merge(adminCajero);
-				System.out.println("id>>>>>>"+adminCajero.getId());
 				entityManager.getTransaction().commit();
 			    return adminCajero;	
 		}catch(Exception err){
@@ -105,44 +104,39 @@ public class CashMachineService {
 		for (AdminCajero fajo : billetes) {
 			AdminCajero admincajero = new AdminCajero();
             if (valor >= fajo.getDenominacion()) { 
-            	cantidad = valor / fajo.getDenominacion(); 
+            	cantidad = calcularCantidadMaxima(fajo,valor);
             	valor = valor - cantidad * fajo.getDenominacion();
-            	if (cantidad>fajo.getCantidad()){
-            		continue;
-            	}
             	admincajero.setCantidad(cantidad);
             	admincajero.setDenominacion(fajo.getDenominacion());
-            	billetesDispensados.add(admincajero);
-                System.out.println( "MONTO FALTANTE" + valor );
-            } 
+            	if(cantidad>0){
+            		billetesDispensados.add(admincajero);
+            	}
+           } 
 
 		}
 		
 		
 		return billetesDispensados;
-		
-		/*
-		 
-		    int amount = 60000;
-            int notes[] = { 100000,50000 ,20000 ,10000 }; 
-            int[] noteCounter = new int[9];
-              
-            // count notes using Greedy approach 
-            for (int i = 0; i < notes.length; i++) { 
-                if (amount >= notes[i]) { 
-                    noteCounter[i] = amount / notes[i]; 
-                    amount = amount - noteCounter[i] * notes[i]; 
-                     //System.out.println( "MONTO" + amount );
-                } 
-                 System.out.println( notes[i] );
-                 System.out.println( noteCounter[i] );
-            } 
-		  
-		 
-		 */
 	}
 
-
+	public int  calcularCantidadMaxima(AdminCajero fajo, int valor){
+		
+		if(valor%fajo.getDenominacion()==0){
+			int totalmaximo=0;
+			for (int i =1; i<= fajo.getCantidad(); i++){
+		
+				totalmaximo += fajo.getDenominacion();
+		    	if (totalmaximo==valor){
+		    		return i;
+		    	}else if(totalmaximo>valor){
+		    		return i-1;
+		    	}	
+		     }
+			 return fajo.getCantidad();
+		}
+		
+		return 0;
+	}
 	
 	  /// elimina los billetes dispensados  usar .merge
 	public ArrayList<AdminCajero> descontarBilletes(
@@ -150,13 +144,30 @@ public class CashMachineService {
 			ArrayList<AdminCajero> billetes) {
 		
 		
-		//PILASSSSSSSSSSSSSSSSSSSSSSS
-		//hacer la logica para que valide que billetes le va a devolver por denominación
+		entityManager.getTransaction().begin();
+		try {
+			for (AdminCajero fajodisponible : billetes) {
+				for (AdminCajero fajoentregado : billetesDispensados) {
+					if (fajodisponible.getDenominacion() == fajoentregado.getDenominacion() ){
+						 int cantidadActual =fajodisponible.getCantidad() - fajoentregado.getCantidad(); 
+						 fajodisponible.setCantidad(cantidadActual);
+						 entityManager.merge(fajodisponible);
+							
+					}
+				}
+		 	}
+				entityManager.getTransaction().commit();
+				return billetes;	    	
 				
+		}catch(Exception err){
+			if (entityManager.getTransaction().isActive()){
+			   entityManager.getTransaction().rollback(); 
+			}
+			return null;
+		} 
 		
-		return null;
+		
 	}
-	
 	
 	
 }
