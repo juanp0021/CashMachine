@@ -24,11 +24,11 @@ public class CashMachineService {
 		// TODO Auto-generated constructor stub
 	}
 	
-	
+	/*
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: Guarda los billetes por medio de la pantalla de administración
+	 * */
 	public AdminCajero guardar(AdminCajero adminCajero) throws Exception{
-		
-		
-		
 		entityManager.getTransaction().begin();
 		try {
 				
@@ -119,6 +119,11 @@ public class CashMachineService {
 		return billetesDispensados;
 	}
 
+	/*
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: Realiza el calculo y suministro de los billetes 
+	 * de tal manera que se devuelva la cantidad justa solicitada.
+	 * */
 	public int  calcularCantidadMaxima(AdminCajero fajo, int valor){
 		
 		if(valor%fajo.getDenominacion()==0){
@@ -138,7 +143,10 @@ public class CashMachineService {
 		return 0;
 	}
 	
-	  /// elimina los billetes dispensados  usar .merge
+	/*
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: Elimina los billetes dispensados del stock por medio de una transaccion
+	 * */
 	public ArrayList<AdminCajero> descontarBilletes(
 			ArrayList<AdminCajero> billetesDispensados,
 			ArrayList<AdminCajero> billetes) {

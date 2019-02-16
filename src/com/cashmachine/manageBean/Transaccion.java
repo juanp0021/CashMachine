@@ -71,11 +71,17 @@ public class Transaccion implements Serializable {
 		
 	}
 
+	/*
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: Realiza el calculo y suministro de los billetes segun el pedido del usuario.
+	 * 
+	 * */
 	public void dispensarDinero() {
 
 		System.out.println(this.valor);
 		FacesContext context = FacesContext.getCurrentInstance();
 		CashMachineValidators validar = new CashMachineValidators();
+		// set de validaciones para la transacción actual
 		String resultado  =	validar.validarTransaccion(this.billetes, this.valor);
 		
 		if (resultado !=""){
@@ -84,7 +90,7 @@ public class Transaccion implements Serializable {
 			return;
 		}else{
 			
-			//RECUPERAR LOS BILLETES QUE SE VAN A DESCONTAR
+			//Recuperar billetes que se van a descontar  
 			this.billetesDispensados = cashMachineService.dispensarBilletes(this.billetes, this.valor);
 			
 			
@@ -94,11 +100,8 @@ public class Transaccion implements Serializable {
 				cashMachineService.descontarBilletes(this.billetesDispensados,this.billetes);
 				loadBilletes();
 			}
-			 
-			
-			
 		}
 
-	}
+	} // fin de dispensar dinero
 
 }

@@ -8,6 +8,12 @@ public class CashMachineValidators {
 	
 	String resultado ="";
 	
+	/*
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: valida las entradas de cada una de los ingresos de billetes a realizar.
+	 * 
+	 * */
+	
 	public String  validarFajoBillete(ArrayList<AdminCajero> lista, AdminCajero admincajero){
 		
 		resultado ="";
@@ -24,8 +30,8 @@ public class CashMachineValidators {
 	}
 	
 	/*
-	 * 
-	 * VALIDAR VALOR SOLICITADO VS BILLETES EXISTENTES
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: valida las entradas de cada una de las transacciones a realizar
 	 * 
 	 * */
 	
@@ -49,7 +55,7 @@ public class CashMachineValidators {
 	    }
 
 		if (valor< 0 ){
-			resultado = "Alerta! El valor solicitado no debe ser un valor negativo..";
+			resultado = "Alerta! El valor solicitado no debe ser un valor negativo.";
 		}
 		
 		return resultado;

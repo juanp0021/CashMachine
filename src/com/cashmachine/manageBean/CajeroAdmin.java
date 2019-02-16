@@ -83,7 +83,10 @@ public class CajeroAdmin implements Serializable {
 		
 	}
 		
-	// SE DOCUMENTA EL METODO
+	/*
+	 * Autor Juan Pablo castiblanco
+	 * Descripción: Guarda la cantidad y la denominacion de los billetes
+	 * */
 	public void  guardarCantidad(){
 		
 		CashMachineValidators validar = new CashMachineValidators();
