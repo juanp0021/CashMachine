@@ -86,7 +86,13 @@ public class Transaccion implements Serializable {
 			//RECUPERAR LOS BILLETES QUE SE VAN A DESCONTAR
 			this.billetesDispensados = cashMachineService.dispensarBilletes(this.billetes, this.valor);
 			
-			 cashMachineService.descontarBilletes(this.billetesDispensados,this.billetes);
+			
+			if (this.billetesDispensados.isEmpty()){
+				
+				context.addMessage(null, new FacesMessage("Resultado","El cajero no tiene recursos financieros suficientes para dispensar su pedido.") );	
+				
+			}
+			 //cashMachineService.descontarBilletes(this.billetesDispensados,this.billetes);
 			
 			
 		}

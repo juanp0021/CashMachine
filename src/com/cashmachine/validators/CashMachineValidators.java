@@ -15,8 +15,9 @@ public class CashMachineValidators {
 			
 			if(adminCajero.getDenominacion() == admincajero.getDenominacion()){
 				
-				resultado = "Aleerta! ya existe un billete de la denominación presentada.";
+				resultado = "Alerta! ya existe un billete de la denominación presentada.";
 			}
+			
 		}
 		
 		return resultado;
@@ -41,7 +42,19 @@ public class CashMachineValidators {
 			resultado = "Alerta! no hay dinero suficiente para dispensar su pedido.";
 		}
 		
+		if (valor%10 != 0)
+	    {
+			resultado = "Alerta! Transacción Invalida: no es posible dispensar la cantidad solicitada acerquese a nuestras oficinas.";
+	        
+	    }
+
+		if (valor< 0 ){
+			resultado = "Alerta! El valor solicitado no debe ser un valor negativo..";
+		}
+		
 		return resultado;
 	}
+	
+	
 
 }

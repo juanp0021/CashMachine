@@ -1,0 +1,9 @@
+== README
+Desarrollo : 14 Febrero 2019
+
+== Welcome to java project
+
+Agregar los comentarios de 
+1. Ubicación de archivos  .sql
+2. Nombre del proyecto y url del repositorio github
+3. Url's de acceso para las páginas 

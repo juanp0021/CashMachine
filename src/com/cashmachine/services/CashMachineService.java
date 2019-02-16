@@ -55,7 +55,7 @@ public class CashMachineService {
 			ArrayList<AdminCajero> adminCajeroList = new ArrayList<AdminCajero>();
 				
 			adminCajeroList = (ArrayList<AdminCajero>) entityManager.createQuery(
-			            "SELECT p FROM AdminCajero p").getResultList();
+			            "SELECT p FROM AdminCajero p order by p.denominacion desc").getResultList();
 			
 				entityManager.getTransaction().commit();
 			    
@@ -94,14 +94,52 @@ public class CashMachineService {
 		} 
 	}
 
+	//hacer la logica para que valide que billetes le va a devolver por denominación
+	
+	public ArrayList<AdminCajero> dispensarBilletes(ArrayList<AdminCajero> billetes, int valor) {
+		
+		ArrayList<AdminCajero> billetesDispensados = new ArrayList<AdminCajero>();
+		int total = 0;
+		int cantidad =0;
+		
+		for (AdminCajero fajo : billetes) {
+			AdminCajero admincajero = new AdminCajero();
+            if (valor >= fajo.getDenominacion()) { 
+            	cantidad = valor / fajo.getDenominacion(); 
+            	valor = valor - cantidad * fajo.getDenominacion();
+            	if (cantidad>fajo.getCantidad()){
+            		continue;
+            	}
+            	admincajero.setCantidad(cantidad);
+            	admincajero.setDenominacion(fajo.getDenominacion());
+            	billetesDispensados.add(admincajero);
+                System.out.println( "MONTO FALTANTE" + valor );
+            } 
 
-	public ArrayList<AdminCajero> dispensarBilletes(
-			ArrayList<AdminCajero> billetes, int valor) {
-		//PILASSSSSSSSSSSSSSSSSSSSSSS
-		//hacer la logica para que valide que billetes le va a devolver por denominación
+		}
 		
 		
-		return billetes;
+		return billetesDispensados;
+		
+		/*
+		 
+		    int amount = 60000;
+            int notes[] = { 100000,50000 ,20000 ,10000 }; 
+            int[] noteCounter = new int[9];
+              
+            // count notes using Greedy approach 
+            for (int i = 0; i < notes.length; i++) { 
+                if (amount >= notes[i]) { 
+                    noteCounter[i] = amount / notes[i]; 
+                    amount = amount - noteCounter[i] * notes[i]; 
+                     //System.out.println( "MONTO" + amount );
+                } 
+                 System.out.println( notes[i] );
+                 System.out.println( noteCounter[i] );
+            } 
+		  
+		 
+		 */
 	}
 
 
@@ -118,4 +156,7 @@ public class CashMachineService {
 		
 		return null;
 	}
+	
+	
+	
 }
