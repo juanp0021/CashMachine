@@ -6,7 +6,7 @@
   START 1
   CACHE 1;
   
-CREATE TABLE admincajero (
+ CREATE TABLE admincajero (
     id integer NOT NULL DEFAULT nextval('sequenceAdminCajero'),
     cantidad integer,
     denominacion integer,
