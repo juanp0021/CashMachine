@@ -1,6 +1,8 @@
-﻿-- Database: "CashMachine"
+-- Database: "CashMachine"
 
 -- DROP DATABASE "CashMachine";
+
+--CREAR LAS SENTENCIAS SENTENCIA POR SENTENCIA
 create user machine;
 alter user machine with  password 'machine123';
 
