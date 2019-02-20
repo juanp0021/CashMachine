@@ -18,13 +18,16 @@ https://gitrhub.com/juanp0021/CashMachine.git
 >JPA
 5. paquetes del proyecto
 entity > se crean entidades con JPA
-manageBean > Administra las funcionalidades de las pantallas de administración CajeroAdmin.java y Dispensador Transacción.java 
+manageBean > Administra las funcionalidades de las pantallas de administraciï¿½n CajeroAdmin.java y Dispensador Transacciï¿½n.java 
 services > en este paque se encuentran codificadas las reglas de negocio
 validators > en este paquete se encuentran los validadores previos a ejecutar las reglas de negocio.
 
-Nota: por favor tener en cuenta cambiar la clave que conecta a la base de datos del archivo persistence 
 
-      para realizar las pruebas primero se deben configurar los billetes cantidad y denominación.
+RUTA DE ACCESO
+http://localhost:8080/CaschMachine/Admin.xhtml
+
+
+Nota: Para realizar las pruebas primero se deben configurar los billetes cantidad y denominaciï¿½n.
       
  Cualquier duda o pregunta por favor llamar: 3012287882
 

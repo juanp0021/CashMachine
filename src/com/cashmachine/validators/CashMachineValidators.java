@@ -14,20 +14,34 @@ public class CashMachineValidators {
 	 * 
 	 * */
 	
+
+
 	public String  validarFajoBillete(ArrayList<AdminCajero> lista, AdminCajero admincajero){
-		
+
 		resultado ="";
-		for (AdminCajero adminCajero : lista) {
-			
-			if(adminCajero.getDenominacion() == admincajero.getDenominacion()){
+
+		if(lista != null) {
+
+			for (AdminCajero adminCajero : lista) {
+
 				
-				resultado = "Alerta! ya existe un billete de la denominación presentada.";
+
+				if(adminCajero.getDenominacion() == admincajero.getDenominacion()){
+
+					
+
+					resultado = "Alerta! ya existe un billete de la denominaci?n presentada.";
+
+				}
+
+				
+
 			}
-			
+
 		}
-		
 		return resultado;
 	}
+
 	
 	/*
 	 * Autor Juan Pablo castiblanco
