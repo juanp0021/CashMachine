@@ -4,12 +4,12 @@ Desarrollo : 14 Febrero 2019
 == Cash Maghine
 
 Agregar los comentarios de 
-1. Ubicación de archivos  .sql 
+1. Ubicacion de archivos  .sql 
 la ubicacion de los archivos se encuentra en la carpeta siguiente del proyecto 
 \workspace\CaschMachine\ScriptsDb
 2. Nombre del proyecto y url del repositorio github
 https://gitrhub.com/juanp0021/CashMachine.git
-3. Url's de acceso para las páginas
+3. Url's de acceso para las paginas
 4. Componentes utilizados en el Ambiente de desarrollo
 >PRIME FACES
 >TOMCAT 7 
@@ -18,7 +18,7 @@ https://gitrhub.com/juanp0021/CashMachine.git
 >JPA
 5. paquetes del proyecto
 entity > se crean entidades con JPA
-manageBean > Administra las funcionalidades de las pantallas de administraci�n CajeroAdmin.java y Dispensador Transacci�n.java 
+manageBean > Administra las funcionalidades de las pantallas de administracion CajeroAdmin.java y Dispensador Transaccion.java 
 services > en este paque se encuentran codificadas las reglas de negocio
 validators > en este paquete se encuentran los validadores previos a ejecutar las reglas de negocio.
 
@@ -27,7 +27,7 @@ RUTA DE ACCESO
 http://localhost:8080/CaschMachine/Admin.xhtml
 
 
-Nota: Para realizar las pruebas primero se deben configurar los billetes cantidad y denominaci�n.
+Nota: Para realizar las pruebas primero se deben configurar los billetes cantidad y denominacion.
       
  Cualquier duda o pregunta por favor llamar: 3012287882
 
