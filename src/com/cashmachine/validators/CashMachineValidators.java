@@ -10,7 +10,7 @@ public class CashMachineValidators {
 	
 	/*
 	 * Autor Juan Pablo castiblanco
-	 * Descripción: valida las entradas de cada una de los ingresos de billetes a realizar.
+	 * Descripción: valida las entradas y salidas de cada una de los ingresos y egresos de billetes a realizar.
 	 * 
 	 * */
 	

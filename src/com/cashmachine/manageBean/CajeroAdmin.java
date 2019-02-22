@@ -98,8 +98,6 @@ public class CajeroAdmin implements Serializable {
 			  context.addMessage(null, new FacesMessage("Error",  resultado) );
 			  return;
 		}
-		//System.out.println(" GUARDO!!!!!"+this.admincajero.getCantidad());
-		
 		
 		AdminCajero resultadoAdminCajero;
 		try {
@@ -119,7 +117,6 @@ public class CajeroAdmin implements Serializable {
 			
 			
 		} catch (Exception e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		    context.addMessage(null, new FacesMessage("Resultado",  "error al guardar.") );
 		}

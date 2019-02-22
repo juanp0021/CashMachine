@@ -11,7 +11,6 @@ import com.cashmachine.manageBean.CajeroAdmin;
 
 
 
-// el proposito del service esta clase es el codificar las reglas de negocio
 
 public class CashMachineService {
 
@@ -20,8 +19,6 @@ public class CashMachineService {
 	public CashMachineService() {
 		
 		entityManager =   Persistence.createEntityManagerFactory("entityManager").createEntityManager();
-		
-		// TODO Auto-generated constructor stub
 	}
 	
 	/*
@@ -140,7 +137,7 @@ public class CashMachineService {
 		     }
 			 return fajo.getCantidad();
 		}
-		else //if (valor < (fajo.getDenominacion()*fajo.getCantidad()) ) 
+		else
 			{
 				int totalmaximo=0;
 				for (int i =1; i<= fajo.getCantidad(); i++){
