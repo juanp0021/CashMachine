@@ -75,6 +75,20 @@ public class CashMachineValidators {
 		return resultado;
 	}
 	
-	
+	public String validarCantidadEntregada(ArrayList<AdminCajero> billetesDispensados, int valor){
+		
+		resultado ="";
+		int totalentregado = 0;
+		for (AdminCajero adminCajero : billetesDispensados) {
+			totalentregado += adminCajero.getCantidad() * adminCajero.getDenominacion();
+		}
+		if (totalentregado != valor){
+			
+			resultado = "Alerta! El valor solicitado no puede ser entregado.";
+		}
+
+		return resultado;
+	}
+		
 
 }

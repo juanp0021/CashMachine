@@ -94,7 +94,12 @@ public class Transaccion implements Serializable {
 			this.billetesDispensados = cashMachineService.dispensarBilletes(this.billetes, this.valor);
 			
 			
-			if (this.billetesDispensados.isEmpty()){
+			 resultado = validar.validarCantidadEntregada(this.billetesDispensados,this.valor);
+			if (resultado !=""){
+				this.billetesDispensados.clear();
+				context.addMessage(null, new FacesMessage("Resultado",resultado));
+			}
+			else if (this.billetesDispensados.isEmpty()){
 				context.addMessage(null, new FacesMessage("Resultado","El cajero no tiene recursos financieros suficientes para dispensar su pedido.") );	
 			}else{
 				cashMachineService.descontarBilletes(this.billetesDispensados,this.billetes);

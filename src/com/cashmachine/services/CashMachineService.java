@@ -127,6 +127,7 @@ public class CashMachineService {
 	public int  calcularCantidadMaxima(AdminCajero fajo, int valor){
 		
 		if(valor%fajo.getDenominacion()==0){
+			
 			int totalmaximo=0;
 			for (int i =1; i<= fajo.getCantidad(); i++){
 		
@@ -139,6 +140,21 @@ public class CashMachineService {
 		     }
 			 return fajo.getCantidad();
 		}
+		else //if (valor < (fajo.getDenominacion()*fajo.getCantidad()) ) 
+			{
+				int totalmaximo=0;
+				for (int i =1; i<= fajo.getCantidad(); i++){
+					totalmaximo += fajo.getDenominacion();
+					if (totalmaximo>valor){
+						return i-1;
+					}else if (fajo.getCantidad() == i )
+					{
+						return i;
+					}
+				}
+		}
+		
+		
 		
 		return 0;
 	}
