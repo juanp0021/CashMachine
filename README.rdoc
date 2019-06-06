@@ -1,5 +1,5 @@
 == README
-Desarrollo : 14 Febrero 2019
+Desarrollo : 6 Junio 2019
 
 == Cash Maghine
 
