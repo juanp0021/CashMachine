@@ -29,5 +29,4 @@ http://localhost:8080/CaschMachine/Admin.xhtml
 
 Nota: Para realizar las pruebas primero se deben configurar los billetes cantidad y denominacion.
       
- Cualquier duda o pregunta por favor llamar: 3012287882
 
